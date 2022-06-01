@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Exemplo 3</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// Define uma Classe (ou tipo) de Objeto
+		class Aluno
+		{
+			constructor(pnome,snome,ende,tele) // executado quando o objeto é criado, new Aluno(...)
+			{
+				this.prinome=pnome; this.sobrenome=snome; this.endereco=ende; this.telefone=tele;
+			}
+			nomeCompleto () {return this.prinome + ' ' + this.sobrenome;} // método
+		}
+
+		class Livro {
+			constructor(isbn, titulo, autor){
+				this.isbn=isbn; this.titulo=titulo; this.autor=autor;
+			}
+		}
+
+		// Cria objetos do tipo Aluno
+		aluno1 = new Aluno ('Jose','da Silva','rua X, 39',1123234343);
+		aluno2 = new Aluno ('Maria','de Oliveira','rua y, 191',1177778888);
+		aluno3 = new Aluno ('Carla','Freitas','rua Z,32',1354322345);
+
+		L1 = new Livro(123,'Javascript','Joao da Silva');
+		L2 = new Livro(887,'c#','Maria da Silva');
+
+		document.write(aluno1.nomeCompleto() + '<br/>' + aluno1.telefone + '<br/>');
+		document.write(aluno2.nomeCompleto() + '<br/>' + aluno2.telefone + '<br/>');
+		document.write(aluno3.nomeCompleto() + '<br/>' + aluno3.telefone + '<br/>');
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!--
+  Este exemplo demonstra montagem dinâmica de tabelas.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TP2</title>
+	
+      <style type="text/css">
+	  .bc {border-radius:10px; color:white;
+	       background-color:red; font-weight:900}
+	  .ic {background-color:#CCF; font-weight:900}
+	  table {border-collapse:collapse}
+      </style>
+	
+      <script type="text/javascript">
+
+      function criarTabela(botao) {
+	    //Desabilita botão criar
+		botao.disabled=true;
+		//Cria tabela
+	    t=document.createElement("TABLE");
+		t.id="T1";
+		//Cria corpo da tabela
+		tb=document.createElement("TBODY");
+		//Cria linha
+		l=document.createElement("TR");
+		//Cria primeira célula para a linha
+		c1=document.createElement("TH");
+		x=document.createTextNode("X");
+		c1.width="100px";
+		c1.appendChild(x);
+		//Cria segunda célula para a linha
+		c2=document.createElement("TH");
+		x=document.createTextNode("Y");
+		c2.width="100px";
+		c2.appendChild(x);
+		//Cria terceira célula para a linha
+		c3=document.createElement("TH");
+		c3.width="20px";
+		l.appendChild(c1); // adiciona célula a linha
+		l.appendChild(c2); // adiciona célula a linha
+		l.appendChild(c3); // adiciona célula a linha
+		tb.appendChild(l); // adiciona linha ao corpo tabela
+		t.appendChild(tb); // adicionar corpo a tabela
+		t.border=2;
+		document.body.appendChild(t); // adiciona tabela ao documento
+	  }
+
+      function incluirLinha() {
+		T1=document.getElementById("T1"); // obtem tabela
+		TR=T1.insertRow(T1.rows.length);  // insere linha final
+		TR.innerHTML=                     // define o conteúdo da linha (outra forma: compare como foi feito em "criarTabela"
+		  "<td><input class='ic' type='text' value=''/></td>"+
+		  "<td><input class='ic' type='text' value=''/></td>"+
+		  "<td><input class='bc' type='button' value='X' onclick='excluirLinha(this)'/></td>";
+	  }
+  
+      function excluirLinha(botaoExcluirPressionado) {
+	    t1=document.getElementById("T1");
+	    t1.deleteRow(botaoExcluirPressionado.parentElement.parentElement.rowIndex); // pai botao = TD; pai TD é TR.
+                                                                                        // rowIndex é o número da linha a ser apagada
+	  }
+  	    
+      </script>
+  </head>
+  <body>
+    <h1>TP2</h1>
+    <button class="bc" onclick="criarTabela(this)">Criar</button>
+    <button class="bc" onclick="incluirLinha()">Inserir</button>	
+  </body>
+</html>

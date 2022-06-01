@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Exemplo 2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// Objeto JSON (Javascript Object Notation)
+		aluno = {prinome: 'Jose', sobrenome:'da Silva', 
+		         endereco: 'rua X, 39', telefone: '1123234343',
+		         nomeCompleto: function() {return this.prinome + ' ' + this.sobrenome;}, // método
+		         nomeCompletoMaiusculo1: function() {return this.prinome.toUpperCase() + ' ' + this.sobrenome.toUpperCase();},
+		         nomeCompletoMaiusculo2: function() {return this.nomeCompleto().toUpperCase();}
+		        };
+		
+		document.write(aluno.nomeCompleto() + '<br/>');
+		document.write(aluno.nomeCompletoMaiusculo1() + '<br/>');
+		document.write(aluno.nomeCompletoMaiusculo2() + '<br/>');
+	</script>
+</body>
+</html>

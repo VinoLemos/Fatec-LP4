@@ -1,0 +1,57 @@
+<!--
+  Este exemplo demonstra montagem dinâmica de uma lista a partir de dados em JSON.
+-->
+<!DOCTYPE html>
+<html>
+ <head>
+  <script type="text/javascript">
+
+    // Disciplinas de cada curso (string recebidas do servidor formatadas como vetores de objetos JSON)
+    var ads = '[{"cod":1,"dsc":"Algoritmos"},{"cod":2,"dsc":"Linguagem de Programação"}]';
+    var pq  = '[{"cod":3,"dsc":"Quimica 1"},{"cod":4,"dsc":"Quimica 2"}]';
+    var cmx = '[{"cod":5,"dsc":"Direito Internacional"},{"cod":6,"dsc":"Contabilidade"},{"cod":7,"dsc":"Inglês"}]';
+
+    function FA() {
+      let disc = [];  // vetor vazio
+      let curso = document.getElementById("L1").value;  // obtém o valor do dropdownlist dos cursos
+      if (curso=="1") {
+        disc = JSON.parse(ads);  // convert a string para vetores de objetos JSON
+      } else if (curso=="2") {
+        disc = JSON.parse(pq);
+      } else if (curso=="3") {
+        disc = JSON.parse(cmx);
+      }
+      
+      // Limpar a lista de disciplinas (L2)
+      let l2 = document.getElementById("L2");
+      while (l2.childNodes.length>0) {          // enquanto existirem filhos
+        l2.removeChild(l2.childNodes[0]);       // remove primeiro filho
+      }      
+
+      for(let i=0;i<disc.length;i++) {              // percorre o vetor de disciplinas
+        let op = document.createElement("OPTION");  // cria um elemento option
+        op.value = disc[i].cod;			    // define valor
+        op.innerHTML = disc[i].dsc;		    // define conteúdo
+        l2.appendChild(op);			    // adiciona como filho da lista de disciplinas (L2)
+      }      
+
+    }
+  </script>
+ </head>
+ <body>
+  <form>
+
+    <!-- Lista de Cursos -->
+    <select id="L1" onchange="FA()">
+      <option value="1">ADS</option>
+      <option value="2">PQ</option>
+      <option value="3">COMEX</option>
+    </select>
+
+    <!-- Lista de Disciplinas, preenchida dinamicamente conforme curso selecionado -->
+    <select id="L2">
+    </select>
+
+  </form>
+ </body>
+</html>

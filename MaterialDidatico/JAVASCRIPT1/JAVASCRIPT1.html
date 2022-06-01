@@ -1,0 +1,193 @@
+﻿<!--
+  Este arquivo apresenta a estrutura básica de programação em Javascript.
+  Assuntos tratados:
+    - Comentários
+    - Variáveis, tipos de dados e escopo
+    - Operadores
+    - Estruturas condicional
+    - Estruturas de repetição
+    - Vetores
+    - Funções convencionais
+    - Arrow Function
+    - JSON (objetos javascript)
+    - Destructuring
+    - Operações com vetores (map, filter e reduce)
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JAVASCRIPT 1</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+            //comentário de única linha
+            /* comentário
+               de várias linhas 
+             */
+            // A linguagem Javascript é case-sensitive, diferencia letras maiúsculas de minúsculas.
+            var A;  // variável global - acessível em qualquer parte deste script - valor indefinido
+            A = 10; // através do operado de atribuição, em A é armazenado o número 10 e A
+                        // passa a ser do tipo NUMBER.
+            A = true; // variável A muda de valor e assume o tipo correspondente (BOOLEAN)
+            A = "ABC"; // variável A passa a ser do tipo STRING.
+            const Z = 1001; // constantes não podem ter seu valor alterado
+            document.write(A+"XYZ"); // escreve no documento string concatenada (+)
+            document.write("<BR/>"); // escreve string - o navegador a interpreta como tag
+                                                    // e gera um salto de linha
+            document.write("Tamanho da string em A é de " + A.length + " caracteres<br/>");
+            {let B=10; document.write(B + "<br/>");} // variável declarada do "let"
+            document.write(typeof(B) + "<br/>") // B não existe mais.
+
+            document.write("-----Fim do 1o Bloco<br/>");
+            document.write("<hr/>");
+            // --------------------------------------------
+
+            document.write('<a href="https://www.w3schools.com/jsref/jsref_operators.asp">Referência sobre operadores.</a><br/>');
+            var B = 20;
+            B++; B--; B+=2; B/=2;    // operadores de incremento e decremento, conforme linguagem C
+                                     // Na ordem: incrementa 1; decrementa 1; incrementa 2 (B=B+2); divide por 2 (B=B/2)
+            
+            // Estrutura condicional
+            if(B==="11"){            // B é to tipo NUMBER, com o operador "===", tipos diferente gera "false".
+                                     // se fosse usado "==", seria "true", pos o valor de B seria convertido para string antes da comparação.
+                document.write("IGUAL<br/>");
+            } else if (B > 11){
+                document.write("MAIOR<br/>");
+            } else {
+                document.write("MENOR<br/>");
+            }
+            
+            
+            // Estrutura switch-case
+            document.write("Exemplo switch-case<br/>");
+            var C = 2;
+            switch(C){
+                case 1:
+                    document.write("AAA");  // se o valor em "C" for 1
+                    break;                  // break é necessário para finalizar
+                case 2:
+                    document.write("BBB");  // se o valor em "C" for 2
+                    break;
+                default:
+                    document.write("CCC");  // se o valor em "C" for diferente de 1 e 2
+            }
+            
+            // Estrutura de repetição - while
+            document.write("Exemplo while<br/>");
+            var i=1;
+            while(i<=10){                   // Os comando do bloco serão repetidos enquanto a condição (i<=10) for verdadeira.
+                document.write(i + "<BR/>");
+                i++;
+            }
+            
+            // Estrutura "for" será vista a seguir no tópico "vetores"
+            document.write("-----Fim do 2o Bloco<br/>");
+            document.write("<hr/>");
+            // --------------------------------------------
+
+            // Vetor
+            var V = ["AZUL", "VERDE", "AMARELO"]; // "v" é atribuído vetor. As 3 posições (índices) são: 0, 1 e 2
+            V[3] = 1000;  // Dinamicamente será criada a posição 3 e nela atribuida o valor 1000 (podem ser tipos diferentes)
+            
+            // Uso da estrutura de repetição FOR para percorrer o vetor
+            document.write("Exemplo FOR para percorrer o vetor<br/>");
+            for(let i = 0; i < V.length; i++){  // com uso de let, a variável "i" existe apenas durante a execução do "for"
+                document.write(V[i] + "<BR/>");
+            }
+            document.write("-----Fim do 3o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+            // Definição de funções em javascript
+	    function soma (x,y=1) // se ao parâmetro "y" não for passado valor, "y" será igual a 1 (default)
+            {
+              return x + y;  // return encerra a execução da função e define o valor de retorno (o resultado)
+            }
+
+            // Exemplos de chamada da função
+            document.write("5 + 7 =" + soma(5,7) + "<br/>")
+            document.write("A chamada soma(5) resulta em " + soma(5) + "<br/>")
+            
+            // Função anônimas podem ser atribuídas a veriáveis
+            var vsoma = function (x,y=1) {return x+y};
+            document.write("Usando variável tipo função: 5 + 7 =" + vsoma(5,7) + "<br/>")
+
+            // Arrow Function simplifica a definição da função
+            var xsoma = (x,y=1) => x+y;
+            document.write("Usando Arrow Funtion: 9 + 14 =" + xsoma(9,14) + "<br/>")
+
+            document.write("-----Fim do 4o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+            // Exemplo de objetos do tipo "Aluno" com método "nomeCompleto"!.
+            var aluno1 = {id:100,nome:"João",sobrenome:"da Silva",nomeCompleto: function(){return this.nome + " " + this.sobrenome;}};
+            document.write("Nome do aluno é " + aluno1.nomeCompleto() + "<br/>" );
+
+	    // Classes de objetos
+            class Aluno
+            {
+              constructor(id,nome,sobrenome)  // executado quando o objeto é criado, new Aluno(...)
+              {
+                this.id=id; this.nome=nome; this.sobrenome=sobrenome;
+              }
+              nomeCompleto () {return this.nome + " " + this.sobrenome;} // método
+            }
+
+            var aluno2= new Aluno(200,"Maria","Oliveira");
+	    document.write("Nome do aluno é " + aluno2.nomeCompleto() + "<br/>" );
+
+            document.write('<a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Classes">Mais detalhes sobre orientação a objeto em Javascript</a><br/>');      
+            document.write("-----Fim do 5o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+	    // Destructuring (Desestruturação)
+            var vx = [1,2,3];
+            const [a,b,c] = vx; // através das constantes a, b e c é possível acessar os valores do vetor.
+            document.write("O segundo valor no vetor é " + b + "<br/>");
+            
+            // Acessando as propriedades de um objeto
+	    const {id, nome, sobrenome} = new Aluno(200,"Maria","Oliveira");  
+            document.write("Os dados do objeto são : " + id + ", " + nome + ", " + sobrenome + "<br/>"); 
+
+            document.write("-----Fim do 6o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+	    // Usando map é possível modificar todos os valores do vetor gerando um novo vetor com o resultado.
+            // Todos os números no X abaixo serão multiplicados por 5 e o resultado atribuído a Y. Foi usada uma Arrow Function para defini a mudança
+	    var X = [1,2,3];
+            var Y = X.map( (v) => v * 5 );  // Por meio de um loop, map carrega "v" com o valor corrente do vetor e o resultado carregado em Y é "v * 5".
+                			// Usando função convencional: Y = X.map( function (v) { return v * 5; } );                       
+            for (let i=0; i< Y.length; i++) document.write(Y[i] + "<br/>");
+
+            document.write("-----Fim do 7o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+	    // Com filter é possível filtar os elementos do vetor que atendem a uma condição
+            // Abaixo, em Y serão carregados apenas os valores >= 5
+            var X = [1,2,3,4,5,6,7,8,9,10];
+            var Y = X.filter( function(v){ return v >= 5 ? true : false; } );  // o valores do vetor que gerarem returno true da função são selecionados.
+	    // Ou com Arrow Function
+            var Y = X.filter( (v) => v >= 5 ? true : false );
+            for (let i=0; i< Y.length; i++) document.write(Y[i] + "<br/>");
+
+            document.write("-----Fim do 8o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+	    // Com reduce é possível, por exemplo, calcular a somatório dos valores no vetor
+            var X = [1,2,3,4,5,6,7,8,9,10];
+	    var total = X.reduce( (acumulado,valor) => acumulado + valor );
+	    document.write("Total = " + total + "<br/>");
+
+            document.write("-----Fim do 9o Bloco<br/>");
+            document.write("<hr/>");  
+            // --------------------------------------------
+
+        </script>
+    </body>
+</html>

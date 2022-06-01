@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Eventos 5</title>
+</head>
+<body>
+	<button id="b1">Botão 1</button>
+	<h1 id="t1">Título</h1>
+	<input type="number" id="i1">
+</body>
+</html>
+<script type="text/javascript">
+	b1.onclick = funcao1;
+	t1.onmouseover = funcao1;
+	i1.onchange = funcao1;
+	function funcao1(e) { // o parâmetro "e" é um objeto contendo os dados do evento
+		// a propriedade e.target corresponde ao elemento em que o evento foi gerado
+		alert( e.target.nodeName );			// nodeName = tipo tag
+		if ( e.target.nodeName=='INPUT' ) {  
+			alert( e.target.value );		// value = valor digitado na caixa
+		} else {
+			alert( e.target.textContent ); 	// textContent = texto na  tag
+		}
+	}
+</script>

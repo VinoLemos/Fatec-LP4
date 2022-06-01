@@ -1,0 +1,41 @@
+<!--
+  Este exemplo demonstra operações básica com DOM, inserindo, manipulando e exluindo elementos.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+   <script type="text/javascript">  
+
+     function adicionar () // adiciona um novo parágrafo ao documento
+     {
+        novoParagrafo = document.createElement("P");   // cria um elemento do tipo parágrafo
+        novoParagrafo.innerHTML = "Agora é " + Date(); // define o conteúdo do parágrafo
+        document.body.appendChild(novoParagrafo);      // Adiciona o parágrafo ao corpo do documento (filho (child) do corpo)
+     } 
+
+     function pintar ()    // Pinta de verde o fundo de todos os parágrafos do documento
+     {
+        todosParagrafos = document.querySelectorAll("P");  // pesquisa e retorna em vetor todos os parágrafos do documento
+        for(let i=0; i<todosParagrafos.length; i++)
+        {
+          todosParagrafos[i].style.backgroundColor="green";
+        }
+     }
+
+     function excluir ()   // Exclui o parágrafo onde o usuário clicou
+     {
+        let elemento = event.srcElement;    // obtém o elemento em que o usuário clicou
+        if (elemento.nodeName=="P")         // verifica se elemento é um parágrafo
+        {
+          let noPai = elemento.parentNode;  // obtém o pai do elemento (neste exemplo é body, poderíamos trabalhar direto dom ele)
+          noPai.removeChild(elemento);      // exclui elemento da lista de filhos do nó pai. 
+        }
+     }
+
+   </script>
+  </head>
+  <body onclick="excluir();">
+    <button onclick="adicionar();">Adicionar</button>
+    <button onclick="pintar();">Pintar</button>
+  </body>
+</html>

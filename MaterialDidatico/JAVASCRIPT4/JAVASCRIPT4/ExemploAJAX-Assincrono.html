@@ -1,0 +1,38 @@
+<!--
+  AJAX permite que um código Javascript gere uma requisição ao servidor web e receba a resposta do mesmo. O código Jabascript pode então atualizar o conteúdo de elementos da página. Este método permite alterações dinâmicas na página sem a necessidade de recarregá-la inteiramente a partir do servidor. O código Javascript pode ser disparado por eventos na interface com o usuário ou automaticamente a partir de eventos de relógio. A interação Javascript/servidor é realizada usando o objeto Javascript "XMLHttpRequest". A interação Javascript/servidor pode ser síncrona (Javascript aguarda resposta do servidor antes de prosseguir para a próxima instrução) ou assíncrona (não aguarda). Quando assíncrona é necessário associar uma função ao evento onreadystatechange do objeto XMLHttpRequest; tal função é disparada toda vez que o servidor retorna um dos "estados" de processamento da requisição. Quando o servidor retornar o "estado" 4 e a indicação de sucesso no processamento(status=200), significa que o resultado da requisição está disponível em "responseText" (ou propriedade XML equivalente) do objeto XMLHttpRequest.
+  Para mais detalhes, acessar: https://www.w3schools.com/xml/ajax_intro.asp
+  Este exemplo demonstra a forma assíncrona. Ao ser pressionado o botão o servidor na Internet é consultado e o valor por ele retornado é apresentado na DIV.
+-->
+<html>
+ <head>
+  <script type="text/javascript">
+    function F1() { // acionada pelo botão
+      document.getElementById("d1").innerHTML = ""; // limpa a div cujo id é "d1"
+      var A = new XMLHttpRequest();                 // criar o objeto que controla a comunicação com o servidor.
+      A.onreadystatechange=function() {
+        if (A.readyState==4 && A.status==200) {     // verifica se a resposta do servidor está pronta e disponível em responseText
+          document.getElementById("d1").innerHTML = A.responseText; // atualiza div com os dados recebidos do servidor.
+        }
+      }
+        //   O evento onreadystatechange é gerado 5 vezes durante o processamento assíncrono da requisição, 
+        //   disparando a execução da função em cada uma das vezes. O servidor avisa o navegador a cada mudança 
+        //   de estado do processamento, gerando esse evento. O estado 4 (readyState) indica que o processamento terminou. 
+        //   Status igual a 200 indica que o processamento foi bem sucedido. 
+        //   A propriedade "responseText" contém o resultado enviado pelo servidor.
+      A.open("GET","http://date.jsontest.com/",true);
+        //   O comando acima define a página no servidor a ser requisitada. 
+        //   O terceiro parâmetro quando true define que o processamento será assíncrono, ou seja, este código javascript 
+        //   não aguardará o retorno do servidor para prosseguir.  
+      A.send(); // envia requisição para o servidor.
+      alert("Fim da função ativada pelo botão");  // se o servidor demorar, você poderá ver esta mensagem antes a DIV ser atualizada.
+    }
+  </script>
+ </head>
+ <body>
+   <H1>Exemplo Ajax Assíncrono</H1>
+   <h3>Note que a página não é recarregada quando o botão é pressionado, apenas a DIV é atualizada com os dados obtidos no servidor.</h3>
+   <button onclick="F1()">Pressione</button>
+   <br/><br/>
+   <div id="d1">DIV está vazia.</div>
+ </body>
+</html>

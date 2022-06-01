@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Exemplo 2</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var vetor;
+	vetor = ["Joao","Maria","Jose"]; // armazena coleção de nomes
+	for(let i=0; i<3; i++) 
+	{
+		document.write(vetor[i]);  // i indica qual célula acessar
+		document.write("<br/>");
+	}
+
+	for(let i=0; i<3; i++) 
+	{
+		vetor[i] = vetor[i].toUpperCase();  // converte string para letras maiúsculas
+	}
+
+	for(let i=0; i<3; i++) 
+	{
+		document.write(vetor[i]);  // i indica qual célula acessar
+		document.write("<br/>");
+	}
+
+	</script>
+</body>
+</html>

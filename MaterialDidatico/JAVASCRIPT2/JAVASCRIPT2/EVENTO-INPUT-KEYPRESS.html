@@ -1,0 +1,28 @@
+<!--
+  Este exemplo demonstra como tratar eventos INPUT em caixas de texto e eventos de teclado KEYPRESS.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+   <script type="text/javascript">  
+
+     function FINPUT(elemento) { // recebe o dropdownlist como parâmetro.
+       document.getElementById("XYZ").innerHTML = elemento.value; //  altera H3 colocando nele o valor da caixa de texto
+     }
+
+     function FTECLADO() {        // Acionada no evento onkeypress - teclado
+       if (event.keyCode >= 65 && event.keyCode <= 90) {  // keyCode - código ASCII da tecla
+         return true;   // aceita o caractere - apenas letras meiúsculas
+       } else {
+         return false;  // rejeita o caractere
+       }
+     }
+
+   </script>
+  </head>
+  <body>
+    <input type="text" oninput="FINPUT(this);" onkeypress="return FTECLADO();" />
+    <hr/>
+    <h3 id="XYZ"></h3>
+  </body>
+</html>

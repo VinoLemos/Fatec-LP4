@@ -1,0 +1,22 @@
+<!--
+  Este exemplo demonstra como tratar eventos "CHANGE" em uma dropdownlist
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+   <script type="text/javascript">  
+
+     function FCHANGE(elemento) { // recebe o dropdownlist como parâmetro.
+       document.body.style.backgroundColor=elemento.value; // redefine o estilo do corpo do documento conforme valor do dropdownlist (cor selecionada)
+     }
+
+   </script>
+  </head>
+  <body>
+    <select onchange="FCHANGE(this)">
+      <option>green</option>
+      <option>blue</option>
+      <option>yellow</option>
+    </select>
+  </body>
+</html>

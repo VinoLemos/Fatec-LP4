@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Exemplo Repetição 1</title>
+</head>
+<body>
+	<label>Gerar tabuada do</label>
+	<input type="number" id="input1" />
+	<h4 id="resultado">Resultado</h4>
+</body>
+</html>
+<script type="text/javascript">
+	input1.onchange = function () {
+		let numero = Number(input1.value);
+		let i = 1, r="";
+		do {
+			r = r + (i * numero) + "<br/>";
+			i++;
+		} while (i<=10);
+		resultado.innerHTML = r;
+	}
+</script>

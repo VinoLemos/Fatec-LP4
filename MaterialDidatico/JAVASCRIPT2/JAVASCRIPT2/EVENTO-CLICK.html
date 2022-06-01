@@ -1,0 +1,20 @@
+<!--
+  Este exemplo demonstra como tratar eventos "Click" em botões.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+   <script type="text/javascript">  
+
+     function mudaCor(elemento) {  // parâmetro "elemento" recebe o botão pressionado ("this")
+       document.body.bgColor=elemento.innerHTML; // "innerHTML" é o conteúdo do botão pressionado(green, red ou black) 
+     }
+
+   </script>
+  </head>
+  <body>
+    <button onclick="mudaCor(this)">green</button> <!-- no evento "click" no botão, a função mudaCor e executada -->
+    <button onclick="mudaCor(this)">red</button>
+    <button onclick="mudaCor(this)">black</button>
+  </body>
+</html>

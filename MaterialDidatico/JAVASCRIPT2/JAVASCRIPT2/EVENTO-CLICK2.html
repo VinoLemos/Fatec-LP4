@@ -1,0 +1,25 @@
+<!--
+  Este exemplo demonstra como tratar eventos "Click" usando o objeto EVENT.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+   <script type="text/javascript">  
+
+     function FX() { 
+       conteudo = event.srcElement.innerHTML; // obtém o conteúdo do elemento gerador do evento (onde usuário pressionou)
+       tipoElem = event.srcElement.nodeName;  // obtém o tipo do elemento gerador do evento
+       // Altera o conteúdo do elemento cujo ID="XYZ"
+       document.getElementById("XYZ").innerHTML = "Elemento pressionado: Tipo = " + tipoElem + "<br/> Conteúdo = " + conteudo; 
+     }
+
+   </script>
+  </head>
+  <body onclick="FX()">
+    <h1>Título 1</h1>
+    <p>Parágrafo 1</p>
+    <p>Parágrafo 2</p>
+    <hr/>
+    <h3 id="XYZ"></h3>
+  </body>
+</html>

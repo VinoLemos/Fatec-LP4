@@ -1,0 +1,30 @@
+<!--
+  Este exemplo demonstra como tratar eventos SUBMIT para formulários, fazendo validações envolvendo mais de um campo.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+   <script type="text/javascript">  
+
+     function validaSubmit(formulario) {            // Acionada no evento onsubmit
+       confirma = confirm("Quer mesmo enviar?");
+       if (!confirma) return false;                 // submit cancelado pois retornar false
+       vtxt1 = parseInt(formulario.txt1.value);     // obtém  e converte para número o valor de TXT1"
+       vtxt2 = parseInt(formulario.txt2.value);     // obtém  e converte para número o valor de TXT2"
+       if (vtxt2 > vtxt1) {   // submete ao servidor apenas de valor em TXT2 for maior
+         return true;   // submit prosseguirá                         
+       } else {
+         return false;  // submit será cancelado.
+       }
+     }
+
+   </script>
+  </head>
+  <body>
+    <form action="http://www.google.com.br/Pag.php" onsubmit="return validaSubmit(this);">
+      <input type="number" name="txt1" required /> <br/>
+      <input type="number" name="txt2" required /> <br/>
+      <input type="submit" name="cmd" value="Enviar" />
+    </form>
+  </body>
+</html>

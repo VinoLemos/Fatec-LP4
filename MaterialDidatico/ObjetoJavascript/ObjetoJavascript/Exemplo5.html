@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Exemplo 5</title>
+</head>
+<body>
+	<button id="bListar">Listar</button>
+	<div id="divListar"></div>
+</body>
+</html>
+<script type="text/javascript">
+	class Aluno
+	{
+		constructor(pnome,snome,ende,tele) // executado quando o objeto é criado, new Aluno(...)
+		{
+			this.prinome=pnome; this.sobrenome=snome; this.endereco=ende; this.telefone=tele;
+		}
+		nomeCompleto () {return this.prinome + ' ' + this.sobrenome;}
+	}
+
+	bListar.onclick = function() {
+		let nomes = "";
+		for (let obj of vetorAlunos) {
+			nomes = nomes + obj.nomeCompleto() + '<br/>';
+		}
+		divListar.innerHTML = nomes;
+	}
+
+	vetorAlunos = [];
+
+	a = new Aluno('Joao','da Silva','rua X,32',1111);
+
+	vetorAlunos.push(a);
+
+	b = new Aluno('Maria','da Silva','rua Y,91',2222);
+
+	vetorAlunos.push(b);	
+
+</script>

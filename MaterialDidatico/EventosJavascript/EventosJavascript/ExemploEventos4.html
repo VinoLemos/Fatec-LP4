@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Eventos 2</title>
+</head>
+<body>
+	<button id="b1">Botão 1</button>
+</body>
+</html>
+<script type="text/javascript">
+	// mais moderno, porém alguns navegadores podem não suportar
+	b1.addEventListener("click",funcao1);
+	function funcao1() {
+		alert("Botão 1 pressionado");
+	}
+	// permite adicionar mais de uma função para tratar um mesmo evento
+	b1.addEventListener("click",function(){alert("Outra função disparada");});
+</script>
