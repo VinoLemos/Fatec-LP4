@@ -10,8 +10,9 @@
 	<br/>
 	Email: {{ $func->email }}
 	<br/>
+	Salário: {{ $func->salario}}
 
-	<form action="/funcionario/{{ $func->id }}" method="post">
+	<form action="/funcionario/{{ $func->id }}" method="get">
 		@csrf
 		@method('delete')
 		<input type="submit" value="Confirmar" />

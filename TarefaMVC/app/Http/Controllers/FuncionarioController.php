@@ -22,10 +22,15 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $todosFunc = Funcionario::all();
-        return View('funcionario.index')->with('funcs',$todosFunc);
+        return View('funcionario.index')->with('funcs', $todosFunc);
     }
 
     /**
@@ -37,7 +42,6 @@ class FuncionarioController extends Controller
     {
         return View('funcionario.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -56,7 +60,7 @@ class FuncionarioController extends Controller
         $f->save();
         */
 
-        Funcionario::create( $request->all() );
+        Funcionario::create($request->all());
 
         return redirect('/funcionario'); //'Funcionario Cadastrado';
     }
@@ -71,7 +75,12 @@ class FuncionarioController extends Controller
     {
         //$f = Funcionario::find($id);
 
-        return View('funcionario.show')->with('func',$funcionario);
+        return View('funcionario.show')->with('func', $funcionario);
+    }
+
+    public function home(Funcionario $funcionario)
+    {
+        return View('layouts.home')->with('func', $funcionario);
     }
 
     /**
@@ -82,7 +91,7 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        return View('funcionario.edit')->with('func',$funcionario);
+        return View('funcionario.edit')->with('func', $funcionario);
     }
 
     /**
@@ -94,7 +103,7 @@ class FuncionarioController extends Controller
      */
     public function update(FuncionarioRequest $request, Funcionario $funcionario)
     {
-        $funcionario->update( $request->all() );
+        $funcionario->update($request->all());
 
         return redirect('/funcionario');
     }
@@ -129,33 +138,33 @@ class FuncionarioController extends Controller
     // POST + /api/funcionario + JSON com os dados
     public function apiStore(Request $request)
     {
-        try{
+        try {
             $funcionario = Funcionario::create($request->all());
-            return response()->json($funcionario,201);
+            return response()->json($funcionario, 201);
         } catch (\Exception $ex) {
-            return response()->json(null,400);
-        } 
+            return response()->json(null, 400);
+        }
     }
 
     // PUT + /api/funcionario/3 + JSON com novos dados
-    public function apiUpdate(Request $request,Funcionario $funcionario)
+    public function apiUpdate(Request $request, Funcionario $funcionario)
     {
-        try{
+        try {
             $funcionario->update($request->all());
-            return response()->json($funcionario,200);
+            return response()->json($funcionario, 200);
         } catch (\Exception $ex) {
-            return response()->json(null,400);
-        } 
+            return response()->json(null, 400);
+        }
     }
 
     // DELETE + /api/funcionario/3
     public function apiDelete(Funcionario $funcionario)
     {
-        try{
+        try {
             $funcionario->delete();
-            return response()->json(null,204);
+            return response()->json(null, 204);
         } catch (\Exception $ex) {
-            return response()->json(null,400);
-        } 
+            return response()->json(null, 400);
+        }
     }
 }

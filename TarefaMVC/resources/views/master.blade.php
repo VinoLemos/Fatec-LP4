@@ -8,7 +8,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
-    <title>Document</title>
+    <title>TarefaMVC</title>
 </head>
 <body>
     @yield('corpo')

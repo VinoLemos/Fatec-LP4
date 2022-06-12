@@ -14,6 +14,10 @@
             <input type="text" name="nome" id="nome" value="{{$func->nome}}" class="form-control"/>
         </div>
         <div class="form-group">
+            <label for="salário">Salário</label>
+            <input type="number" name="salario" id="salario" value="{{$func->salario}}" class="form-control"/>
+        </div>
+        <div class="form-group">
             <label for="dataNascimento">Data de Nascimento</label>
             <input type="date" name="dataNascimento" id="dataNascimento" value="{{$func->dataNascimento}}" class="form-control"/>
         </div>
